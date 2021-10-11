@@ -46,6 +46,12 @@
       </ion-col>
     </ion-row>
 
+    <ion-row *ngIf="toConvert">
+      <ion-col class="ion-margin">
+        <strong>Today, 1 USD worth {{ result }} {{ c2.value }}</strong>
+      </ion-col>
+    </ion-row>
+
 
   </ion-grid>
 

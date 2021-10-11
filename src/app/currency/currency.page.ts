@@ -9,6 +9,8 @@ import { ExchangeService } from '../exchange.service';
 export class CurrencyPage implements OnInit {
   tabCurrencies = ['EUR', 'GBP', 'JPY', 'CNY', 'TND', 'EGP'];
   //curr2 = 'TND';
+  result;
+  toConvert = false;
 
   constructor(private exchangeSer: ExchangeService) {}
 
@@ -18,6 +20,11 @@ export class CurrencyPage implements OnInit {
     this.exchangeSer.getRates().subscribe(
       (response) => {
         console.log(response['quotes']);
+        console.log(Object.getOwnPropertyNames(response['quotes']));
+        let chaine = 'USD' + curr2.value;
+        console.log(response['quotes'][chaine]);
+        this.result = response['quotes'][chaine];
+        this.toConvert = true;
       },
       (error) => {
         console.log(error);
